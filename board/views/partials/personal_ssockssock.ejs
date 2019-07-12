@@ -1,0 +1,10 @@
+
+<!-- 개인 맞춤형 정보 제공 -->
+
+<p><%= currentUser.username %>님 의 쏙쏙 정보 </p>
+<% contacts.forEach(function(contact) { %> <!-- 3 -->
+  <li>
+
+  <a href =<%= contact.link%>  > <%= contact.title%> </a>
+  </li>
+<% }) %>

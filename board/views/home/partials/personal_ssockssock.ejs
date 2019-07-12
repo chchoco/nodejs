@@ -1,0 +1,10 @@
+
+
+<% if(isAuthenticated){ %>
+<p><%= currentUser.username %>님 환영합니다. </a></p>
+<li><a href="/users/<%= currentUser.username %>">My Account</a></li>
+<li><a href="/logout">Logout</a></li>
+  <% include ../../contacts/personal_index %>
+<% } else { %>
+
+<% } %>

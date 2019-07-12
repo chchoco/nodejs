@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/head %>
+  </head>
+  <body>
+    <% include ../partials/nav %>
+    <div class="container home home-welcome">
+      <div class="jumbotron">
+        <h1>SSOKSSOK - MAIN</h1>
+        <P>SSOKSSOK Main 페이지 입니다.</P>
+
+      </div>
+
+<!-- 로그인을 했을때 메인페이지에는 환영한다는 메시지가 뜨고 맞춤형 정보제공  -->
+      <% if(isAuthenticated){ %>
+
+        <p><%= currentUser.username %>님 환영합니다. </p>
+
+        <% include ../partials/personal_ssockssock %>
+
+
+        <!-- 로그인을 안했을때 나타나는 메인페이지 -->
+      <% } else { %>
+      <p>  여러분이 모르고 지나가셨던 수많은
+        사회적 약자를 위한 정보, 혜택, 서비스를 놓치지 마세요</p>
+      <p>   관심사를 입력하면 맞춤형 정보를 제공해줍니다.</p>
+      <p>   지금바로시작하세요 </p>
+      <li><a href="/users/new">Sign Up</a></li>
+      <li><a href="/login">Login</a></li>
+
+      <% } %>
+
+
+    </div>
+
+
+  </body>
+</html>
