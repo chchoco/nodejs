@@ -1,10 +1,119 @@
 
 <!-- 개인 맞춤형 정보 제공 -->
 
-<p><%= currentUser.username %>님 의 쏙쏙 정보 </p>
-<% contacts.forEach(function(contact) { %> <!-- 3 -->
-  <li>
 
-  <a href =<%= contact.link%>  > <%= contact.title%> </a>
-  </li>
-<% }) %>
+<h3><%= currentUser.name %>님 의 쏙쏙 채용정보 </h3>
+
+
+
+
+<table id="ssock-ssock-table">
+
+          <thread class="row header">
+            <tr>
+            <th class="cell">
+
+            </th>
+            <th class="cell">
+              제목
+            </th>
+            <th class="cell">
+              직무
+            </th>
+            <th class="cell">
+              경력
+            </th>
+            <th class="cell">
+              형태
+            </th>
+            <th class="cell">
+              지역
+            </th>
+            <th class="cell">
+              마감일
+            </th>
+            <th class="cell">
+              담기
+            </th>
+            </tr>
+          </thread>
+<tbody>
+
+<% for (var i = 0;i < contacts.length ;i++){ %>
+
+<!-- 아무것도 없을떄  -->
+
+<%if ((contacts[i].local==currentUser.local)&&(contacts[i].condition==currentUser.etype)&&(contacts[i].career==currentUser.career)){%>
+
+  <tr class="row">
+    <td style="display:none;"><%= contacts[i].link%>   </td>
+  <td  class="cell"><a href =<%= contacts[i].link%>  > <%= contacts[i].title%></a></td>
+  <td class="cell"><%= contacts[i].job%> </td>
+  <td class="cell"><%= contacts[i].career%> </td>
+    <td class="cell"><%= contacts[i].condition%> </td>
+
+    <td class="cell"><%= contacts[i].local%> </td>
+  <td  class="cell"><%= contacts[i].enddate%> </td>
+
+  <td  class="cell">  <input type="button" class ="checkBtn" value = "저장" /> </td>
+
+ </tr>
+
+   <% } %>
+  <% } %>
+
+
+
+</tbody>
+
+
+
+</table>
+
+
+
+
+<script>
+
+        // 버튼 클릭시 Row 값 가져오기
+        $(".checkBtn").click(function(){
+          $(this).css("background", "red");
+
+            var str = ""
+            var tdArr = new Array();    // 배열 선언
+            var checkBtn = $(this);
+
+            // checkBtn.parent() : checkBtn의 부모는 <td>이다.
+            // checkBtn.parent().parent() : <td>의 부모이므로 <tr>이다.
+            var tr = checkBtn.parent().parent();
+            var td = tr.children();
+
+            console.log("클릭한 Row의 모든 데이터 : "+tr.text());
+
+            var link = td.eq(0).text();
+            var title = td.eq(1).text();
+            var job = td.eq(2).text();
+            var enddate = td.eq(3).text();
+
+
+            // 반복문을 이용해서 배열에 값을 담아 사용할 수 도 있다.
+            td.each(function(i){
+                tdArr.push(td.eq(i).text());
+            });
+
+            console.log("배열에 담긴 값 : "+title);
+
+
+            str +=    " * 클릭된 Row의 td값 = title. : <font color='red'>" + title + "</font>" +
+                    ", 직무: <font color='red'>" + job + "</font>" +
+                    ", 마감일 : <font color='red'>" + enddate + "</font>";
+
+            $("#ex2_Result1").html(" * 클릭한 Row의 모든 데이터 = " + tr.text());
+            $("#ex2_Result2").html(str);
+            var a = "a";
+            localStorage.setItem(title, tdArr);
+
+            alert("저장되었습니다");
+        });
+
+    </script>

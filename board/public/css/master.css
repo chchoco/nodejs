@@ -193,3 +193,28 @@ form .form-group{
   margin-top: 5px;
   margin-bottom: 11px;
 }
+
+
+
+#ssock-ssock-table{
+  font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#ssock-ssock-table td, #ssock-ssock-table th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#ssock-ssock-table tr:nth-child(even){background-color: #f2f2f2;}
+
+#ssock-ssock-table tr:hover {background-color: #ddd;}
+
+#ssock-ssock-table th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #8fbc8f;
+  color: white;
+}

@@ -2,6 +2,7 @@
 <html>
   <head>
     <% include ../partials/head %>
+
   </head>
   <body>
     <% include ../partials/nav %>
@@ -15,7 +16,6 @@
 <!-- 로그인을 했을때 메인페이지에는 환영한다는 메시지가 뜨고 맞춤형 정보제공  -->
       <% if(isAuthenticated){ %>
 
-        <p><%= currentUser.username %>님 환영합니다. </p>
 
         <% include ../partials/personal_ssockssock %>
 
@@ -31,6 +31,7 @@
 
       <% } %>
 
+    	</div>
 
     </div>
 

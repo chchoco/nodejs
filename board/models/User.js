@@ -5,6 +5,7 @@ var bcrypt = require("bcrypt-nodejs"); // 1
 
 
 // schema // 1
+//유저 스키마 : 유저 컬렉션안에 들어갈 다큐먼트들을 정의
 var userSchema = mongoose.Schema({
  username:{
   type:String,
@@ -28,6 +29,21 @@ var userSchema = mongoose.Schema({
   type:String,
   match:[/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+.[a-zA-Z]{2,}$/,"Should be a vaild email address!"],
   trim:true
+ },
+  local:{//지역
+    type:String
+ },
+ background:{//학력
+   type:String
+ },
+ etype:{//고용형태
+   type:String
+ },
+ carrer:{//경력
+   type:String
+ },
+ dtype:{//장애유형
+   type:String
  }
 },{
  toObject:{virtuals:true}

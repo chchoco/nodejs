@@ -35,6 +35,102 @@
         </div>
       </form>
 
-    </div> <!-- container end -->
+
+<!-- container end -->
+
+
+</div >
+
+      <div class="container home home-welcome" >
+
+
+<div>
+      <span style="float:right">
+
+
+      <!-- <button id="load">저장목록보기</button> -->
+
+   </div>
+    <script type="text/javascript">
+
+//  document.querySelector("#load").addEventListener("click", loadData, false);
+
+//  document.querySelector("#delete").addEventListener("click", deleteData, false);
+
+loadData();
+    function loadData(){
+
+
+      document.write('<table id= "ssock-ssock-table" style="margin-left: auto; margin-right: auto;"><thread><tr><th>내가저장한 채용정보</th><th><button id="delete">전체삭제</button></th></tr></thread><tbody>');
+
+      for ( var i = 0, len = localStorage.length; i < len; ++i ) {
+   var value = localStorage.getItem( localStorage.key( i ) );
+   var key= localStorage.key(i);
+
+  var jbSplit = value.split(',');
+  var link=jbSplit[0];
+
+   console.log(value);
+
+
+  document.write('<tr><td>');
+  document.write('<a href="');
+document.write((link));
+  document.write('">');
+  document.write((key));
+  document.write('</a>');
+  document.write('</td>');
+
+// //직무
+//   document.write('</td>')
+//   document.write('<td>');
+// //마감일
+//   document.write('</td>')
+ document.write('<td><button onclick="deleteLine(this);">삭제</button></td>');
+  document.write('</tr>');
+
+
+  }
+    document.write('</tbody></table>');
+  //console.log("삭제전");
+//  localStorage.removeItem(key);
+//  console.log("삭제후");
+
+if(localStorage.length==0){
+document.write('<div class="container home home-welcome" >저장된 정보가 없습니다<div>');
+}
+    }
+
+  document.querySelector("#delete").addEventListener("click", deleteData, false);
+
+    function deleteData(){
+  localStorage.clear();
+  location.reload();
+    }
+
+
+    function deleteLine(obj) {
+      var tr = $(obj).parent().parent();
+      var td = tr.children();
+
+
+
+      var _id = td.eq(0).text();
+      var title = td.eq(1).text();
+      var job = td.eq(2).text();
+      var enddate = td.eq(3).text();
+        console.log("클릭한 Row의 모든 데이터 : "+title);
+        //라인 삭제
+        localStorage.removeItem(_id);
+        tr.remove();
+    }
+
+
+
+    </script>
+
+
+
+</div>
   </body>
 </html>
